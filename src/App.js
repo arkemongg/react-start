@@ -1,24 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 
+function Car(props){
+  //console.log(props,"props");
+  return <li>hi {props.brand}</li>
+}
+
 function App() {
+  const cars = ['Ford', 'BMW', 'Audi'];
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <h1>Who lives in my garage?</h1>
+      <ul>
+        {cars.map((car) => <Car brand={car} />)}
+      </ul>
+    </>
   );
 }
 
