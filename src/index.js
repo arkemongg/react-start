@@ -5,6 +5,9 @@ import Todos from "./todos";
 const App = () => {
   const [api_url, setApi_url] = useState('http://127.0.0.1:8000/api/products/');
   const [data,setData] = useState([{title:50}])
+  const [prevUrl, setPrevUrl] = useState(null);
+  const [nextUrl, setNextUrl] = useState(null);
+  
 
   useEffect(()=>{
     const timeoutId = setTimeout(() => {
@@ -18,11 +21,18 @@ const App = () => {
     fetch(api_url)
     .then(response => response.json())
     .then(data=>{
+      setPrevUrl(data.previous);
+      setNextUrl(data.next);
       setData(prevData=>[...prevData,...data.results])
-    })
+    }).catch(error => {
+      // Handle fetch errors here
+      console.error('Fetch error:', error);
+      // You can set a state variable to indicate the error and display a message to the user
+    });
   }
   const nextdata = ()=>{
-    setApi_url('https://jsonplaceholder.typicode.com/todos/2')
+    
+  setApi_url(`${nextUrl}`)
   }
   return (
     <>
@@ -39,7 +49,7 @@ const App = () => {
 
         <br />
         <button onClick={loaddata}>+</button>
-        <button onClick={nextdata}>next</button>
+        <button className="next" onClick={nextdata}>next</button>
       </div>
     </>
   );
