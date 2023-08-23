@@ -10,9 +10,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  min-height: 1500px;
+  min-height: 100vh;
+  background: #1E293B;
+  color: white;
 }
 
+#root{
+  min-height: 80vh;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

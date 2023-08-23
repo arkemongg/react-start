@@ -1,13 +1,13 @@
 .products-area{
     width: 100%;
     margin: auto;
-    background: #eee;
-    min-height: 550px;
+    min-height: 100vh;
 }
 .products-list{
     width: 95%;
-    height: 400px;
     margin: auto;
+    min-height: 500px;
+    display: flex;
 }
 .loading-area{
     width: inherit;

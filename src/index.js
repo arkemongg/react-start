@@ -2,14 +2,15 @@ import { useState,useEffect,useRef } from "react";
 import ReactDOM from "react-dom/client";
 import Todos from "./todos";
 import Navigation from "./nav";
+import Footer from "./pages/Footer";
 import './index.css'
 import { Validate } from "./validate";
 import Products from "./pages/Products";
 import Home from "./pages/Home";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
-import { BrowserRouter,Routes,Route } from "react-router-dom";
 
+import { BrowserRouter,Routes,Route } from "react-router-dom";
 
 const App = () => {
   return (
@@ -21,7 +22,6 @@ const App = () => {
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
         </Route>
-        
       </Routes>
     </BrowserRouter>
   )
@@ -29,3 +29,6 @@ const App = () => {
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<App />);
+
+const footer = ReactDOM.createRoot(document.getElementById('footer'));
+footer.render(<Footer />);
