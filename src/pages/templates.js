@@ -8,9 +8,11 @@ export const Title = (title)=>{
 
 export const Card = (props) => {
     return (
-      <div className="max-w-sm bg-white border border-gray-200 rounded-lg shadow">
+      <li className="max-w-sm bg-white border border-gray-200 rounded-lg shadow product">
         <a href="#">
-          <img className="rounded-t-lg" src={"http://127.0.0.1:8000"+props.img} alt="" />
+          <div className="product-img-area">
+          <img className="rounded-t-lg product-img" src={"http://127.0.0.1:8000"+props.img} alt="" />
+          </div>
         </a>
         <div className="p-5">
           <a href="#">
@@ -24,6 +26,17 @@ export const Card = (props) => {
             </svg>
           </a>
         </div>
-      </div>
+      </li>
     )
   }
+
+export const LoadingCard = (props)=>{
+
+  
+  return (
+      <li className="max-w-sm bg-white border border-gray-200 rounded-lg shadow product flex items-center justify-center">
+        <span className="loading loading-ring loading-lg bg-info"></span>
+      </li>
+  )
+
+}

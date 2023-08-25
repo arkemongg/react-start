@@ -4,10 +4,12 @@
     min-height: 100vh;
 }
 .products-list{
-    width: 95%;
+    width: 98%;
     margin: auto;
     min-height: 500px;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 .loading-area{
     width: inherit;
@@ -15,4 +17,20 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.product{
+    width: 350px;
+    height: 450px;
+    margin: 20px;
+}
+.product-img-area{
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    margin-top: 10px;
+    overflow:hidden;
+}
+.product-img{
+    width: 100%;
 }

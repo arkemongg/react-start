@@ -1,20 +1,20 @@
 import { useState, useEffect, useRef } from "react";
 import './styles/Products.css'
-import { Title,Card } from "./templates.js";
+import { Title, Card, LoadingCard } from "./templates.js";
 
 const Products = () => {
   Title("Products")
-  const [apiUrl, setApi_url] = useState('http://127.0.0.1:8000/api/products/?ordering=-created_at');
+  const [apiUrl, setApi_url] = useState('http://127.0.0.1:8000/api/products/');
   const [data, setData] = useState([])
   const [prevUrl, setPrevUrl] = useState(null);
   const [nextUrl, setNextUrl] = useState(null);
+  const [fetchProductLoading, setfetchProductLoading] = useState(true);
   const count = useRef(0);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       loaddata()
-      const productsLoading = document.querySelector('.products-loading')
-      productsLoading.classList.add('invisible')
+      setfetchProductLoading(false)
     }, 1000);
     count.current = count.current + 1;
     return () => {
@@ -34,33 +34,38 @@ const Products = () => {
   }
   const prevdata = () => {
     if (prevUrl) {
+      setfetchProductLoading(true)
       setApi_url(`${prevUrl}`)
     }
   }
   const nextdata = () => {
     if (nextUrl) {
+      setfetchProductLoading(true)
       setApi_url(`${nextUrl}`)
     }
   }
   return (
     <>
       <hr />
-      <div className="products-area">
-        <ul className="products-list">
-          <li className="loading-area products-loading">
-            <div className="loading"></div>
-          </li>
-          {data.map((item, index) => (
-            <li key={index}>
-              {console.log(item)}
-              <Card img={item.image} title={item.title} description = {item.description}/>
-            </li>
-          ))}
+      <div className="products-area m-auto">
+        <ul className="products-list ">
+          {fetchProductLoading ? (
+            Array.from({ length: 8 }, (_, index) => <LoadingCard key={index} />)
+          ) : data.length === 0 ? (
+            <h1 className="text-center text-2xl mt-4">No products available</h1>
+          ) : (
+            data.map((item, index) => (
+              <Card key={index} img={item.image} title={item.title} description={item.description} />
+            ))
+          )}
+
         </ul>
         <h1>Render Count: {count.current}</h1>
         <br />
-        <button className="prev inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900" onClick={prevdata} disabled={!prevUrl}>prev</button>
-        <button className="next" onClick={nextdata} disabled={!nextUrl}>next</button>
+              <div className="btn-area flex justify-center p-10">
+                <button className="prev bg-primary pl-20 pr-20 inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900" onClick={prevdata} disabled={!prevUrl}>prev</button>
+                <button className="next ml-10 bg-primary pl-20 pr-20 inline-block cursor-pointer rounded-md bg-gray-800 px-4 py-3 text-center text-sm font-semibold uppercase text-white transition duration-200 ease-in-out hover:bg-gray-900" onClick={nextdata} disabled={!nextUrl}>next</button>
+              </div>
       </div>
     </>
   );
