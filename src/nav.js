@@ -7,7 +7,7 @@ function NavWithoutLogin() {
     useEffect(() => {
         const timeoutId = setTimeout(() => {
             setLoading(false); // Set loading to false after 5 seconds
-        }, 1000);
+        }, 2000);
 
         return () => {
             setLoading(true);

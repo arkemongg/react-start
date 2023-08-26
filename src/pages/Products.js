@@ -3,8 +3,11 @@ import './styles/Products.css'
 import { Title, Card, LoadingCard } from "./templates.js";
 
 const Products = () => {
+  
+  window.scrollTo(0, 0);
+  
   Title("Products")
-  const [apiUrl, setApi_url] = useState('http://127.0.0.1:8000/api/products/');
+  const [productsUrl, setProductsUrl] = useState('http://127.0.0.1:8000/api/products/?ordering=-id');
   const [data, setData] = useState([])
   const [prevUrl, setPrevUrl] = useState(null);
   const [nextUrl, setNextUrl] = useState(null);
@@ -20,9 +23,9 @@ const Products = () => {
     return () => {
       clearTimeout(timeoutId); // Clean up the timeout when the component unmounts or the effect re-runs
     };
-  }, [apiUrl])
+  }, [productsUrl])
   function loaddata() {
-    fetch(apiUrl)
+    fetch(productsUrl)
       .then(response => response.json())
       .then(data => {
         setPrevUrl(data.previous);
@@ -35,13 +38,13 @@ const Products = () => {
   const prevdata = () => {
     if (prevUrl) {
       setfetchProductLoading(true)
-      setApi_url(`${prevUrl}`)
+      setProductsUrl(`${prevUrl}`)
     }
   }
   const nextdata = () => {
     if (nextUrl) {
       setfetchProductLoading(true)
-      setApi_url(`${nextUrl}`)
+      setProductsUrl(`${nextUrl}`)
     }
   }
   return (
