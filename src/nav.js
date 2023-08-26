@@ -35,7 +35,7 @@ function NavWithoutLogin() {
                             <li><Link onClick={clickedNav} to="/contact">Contact</Link></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+                    <a className="btn btn-ghost normal-case text-xl">Piscrow</a>
                 </div>
                 <div className="navbar-end hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
@@ -53,6 +53,7 @@ function NavWithoutLogin() {
                     </ul>
                 </div>
             </div>
+            <div id="navbar"></div>
             {isLoading ? (
                 <span className="loading loading-spinner text-primary"></span>
             ) : (

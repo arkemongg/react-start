@@ -1,18 +1,27 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef,useLayoutEffect } from "react";
 import './styles/Products.css'
-import { Title, Card, LoadingCard } from "./templates.js";
-
+import { Title, Card, LoadingCard, hrStyle } from "./templates.js";
+import { Filter } from "./productssubs/Filtering";
 const Products = () => {
-  
-  window.scrollTo(0, 0);
-  
   Title("Products")
   const [productsUrl, setProductsUrl] = useState('http://127.0.0.1:8000/api/products/?ordering=-id');
   const [data, setData] = useState([])
   const [prevUrl, setPrevUrl] = useState(null);
   const [nextUrl, setNextUrl] = useState(null);
   const [fetchProductLoading, setfetchProductLoading] = useState(true);
+  const [animateItems, setAnimateItems] = useState(false);
   const count = useRef(0);
+
+  const productsListRef = useRef(null);
+
+  function scrollToProductsList() {
+    if (productsListRef.current) {
+      productsListRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -24,6 +33,14 @@ const Products = () => {
       clearTimeout(timeoutId); // Clean up the timeout when the component unmounts or the effect re-runs
     };
   }, [productsUrl])
+
+      // Use useLayoutEffect to trigger animations after the initial layout
+      useLayoutEffect(() => {
+        if (!fetchProductLoading) {
+          setAnimateItems(true); // Set the animation flag to true
+        }
+      }, [fetchProductLoading]);
+
   function loaddata() {
     fetch(productsUrl)
       .then(response => response.json())
@@ -35,30 +52,45 @@ const Products = () => {
 
       });
   }
+
   const prevdata = () => {
     if (prevUrl) {
-      setfetchProductLoading(true)
-      setProductsUrl(`${prevUrl}`)
+      setfetchProductLoading(true);
+      setProductsUrl(prevUrl);
+      scrollToProductsList();
     }
   }
   const nextdata = () => {
     if (nextUrl) {
-      setfetchProductLoading(true)
-      setProductsUrl(`${nextUrl}`)
+      setfetchProductLoading(true);
+      setProductsUrl(nextUrl);
+      scrollToProductsList();
     }
   }
   return (
     <>
       <hr />
-      <div className="products-area m-auto">
-        <ul className="products-list ">
+      <div className="products-area m-auto" ref={productsListRef}>
+        <div className="text-4xl text-center p-5">Products</div>
+        <p className='' style={hrStyle}>
+        </p>
+        <Filter setProductsUrl={setProductsUrl} loading = {setfetchProductLoading}/>
+        <ul className="products-list" >
           {fetchProductLoading ? (
             Array.from({ length: 8 }, (_, index) => <LoadingCard key={index} />)
           ) : data.length === 0 ? (
             <h1 className="text-center text-2xl mt-4">No products available</h1>
           ) : (
             data.map((item, index) => (
-              <Card key={index} img={item.image} title={item.title} description={item.description} />
+              <Card
+                key={index}
+                img={item.image}
+                title={item.title}
+                description={item.description}
+                className={`${
+                  animateItems ? 'fade-in' : '' // Apply animation class when flag is true
+                } ${index % 2 === 0 ? 'from-left' : 'from-right'}`}
+              />
             ))
           )}
 

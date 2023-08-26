@@ -5,6 +5,13 @@ export const Title = (title)=>{
       document.title = title
     },[])
 }
+//80% hr
+export const hrStyle = {
+  backgroundColor:"white",
+  width:"80%",
+  margin:"auto",
+  height:"1px"
+};
 
 export const Card = (props) => {
     return (

@@ -18,6 +18,14 @@ body {
 #root{
   min-height: 80vh;
 }
+
+.navbar{
+  position: fixed;
+  z-index: 99999;
+}
+#navbar{
+  height: 64px;
+}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
