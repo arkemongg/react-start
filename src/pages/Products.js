@@ -3,6 +3,7 @@ import './styles/Products.css'
 import { Title, Card, LoadingCard, hrStyle } from "./templates.js";
 import { Filter } from "./productssubs/Filtering";
 import { apiUrl } from "../urls";
+import axios from "axios";
 const Products = () => {
   Title("Products")
   const [productsUrl, setProductsUrl] = useState(`${apiUrl}/api/products/?ordering=-id`);
@@ -35,7 +36,7 @@ const Products = () => {
     const timeoutId = setTimeout(() => {
       loaddata()
       setfetchProductLoading(false)
-    }, 1000);
+    }, 2000);
     count.current = count.current + 1;
     return () => {
       clearTimeout(timeoutId); // Clean up the timeout when the component unmounts or the effect re-runs
@@ -82,14 +83,16 @@ const Products = () => {
         <div className="text-4xl text-center p-5">Products</div>
         <p className='' style={hrStyle}>
         </p>
-        <Filter setProductsUrl={setProductsUrl} loading = {setfetchProductLoading}/>
+        <Filter currentUrl = {productsUrl} setProductsUrl={setProductsUrl} loading = {setfetchProductLoading}/>
         <ul className="products-list" >
           {fetchProductLoading ? (
             Array.from({ length: 8 }, (_, index) => <LoadingCard key={index} />)
           ) : data.length === 0 ? (
             <NoProducts/>
           ) : (
+            
             data.map((item, index) => (
+              
               <Card
                 key={index}
                 img={item.image}
@@ -97,6 +100,7 @@ const Products = () => {
                 description={item.description}
                 super = {item.super_seller}
                 verified = {item.is_verified}
+                price = {item.price}
               />
             ))
           )}

@@ -1,6 +1,4 @@
 .filtering-section{
-    
-    
     width: 95%;
     margin: auto;
     display: flex;
@@ -21,7 +19,40 @@
     margin-top: 10px;
     color: black;
 }
+.price-filter{
+    max-width: 1160px;
+    width: 95%;
+    display: flex;
+    justify-content: space-evenly;
+    
+}
+.price-filter input{
+    max-width: 500px;
+    flex-grow: 1;
+    color: black;
+}
+
+.search-btn-area{
+    display: flex;
+    max-width: 750px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
 
 .search{
-    min-width: 350px;
+    min-width: 300px;
+    margin-right: 10px;
+}
+.clear-search{
+    min-width: 300px;
+}
+
+@media screen and (max-width: 660px) {
+    .search-btn-area{
+        flex-direction: column-reverse;
+    }
+    .search{
+        margin-right: 0px;
+        margin-top: 10px;
+    }
 }
