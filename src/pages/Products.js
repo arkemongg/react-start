@@ -2,9 +2,10 @@ import { useState, useEffect, useRef,useLayoutEffect } from "react";
 import './styles/Products.css'
 import { Title, Card, LoadingCard, hrStyle } from "./templates.js";
 import { Filter } from "./productssubs/Filtering";
+import { apiUrl } from "../urls";
 const Products = () => {
   Title("Products")
-  const [productsUrl, setProductsUrl] = useState('http://127.0.0.1:8000/api/products/?ordering=-id');
+  const [productsUrl, setProductsUrl] = useState(`${apiUrl}/api/products/?ordering=-id`);
   const [data, setData] = useState([])
   const [prevUrl, setPrevUrl] = useState(null);
   const [nextUrl, setNextUrl] = useState(null);
@@ -23,6 +24,13 @@ const Products = () => {
     }
   }
 
+  const NoProducts = ()=>{
+      return (
+        <>
+          <h1 className="text-center text-2xl mt-4">No products available</h1>
+        </>
+      )
+  }
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       loaddata()
@@ -49,7 +57,7 @@ const Products = () => {
         setNextUrl(data.next);
         setData(prevData => [...data.results])
       }).catch(error => {
-
+        console.log(error);
       });
   }
 
@@ -79,7 +87,7 @@ const Products = () => {
           {fetchProductLoading ? (
             Array.from({ length: 8 }, (_, index) => <LoadingCard key={index} />)
           ) : data.length === 0 ? (
-            <h1 className="text-center text-2xl mt-4">No products available</h1>
+            <NoProducts/>
           ) : (
             data.map((item, index) => (
               <Card
@@ -87,9 +95,8 @@ const Products = () => {
                 img={item.image}
                 title={item.title}
                 description={item.description}
-                className={`${
-                  animateItems ? 'fade-in' : '' // Apply animation class when flag is true
-                } ${index % 2 === 0 ? 'from-left' : 'from-right'}`}
+                super = {item.super_seller}
+                verified = {item.is_verified}
               />
             ))
           )}

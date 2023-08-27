@@ -13,7 +13,9 @@ export const hrStyle = {
   height:"1px"
 };
 
+
 export const Card = (props) => {
+  console.log(props.verified);
     return (
       <li className="max-w-sm bg-white border border-gray-200 rounded-lg shadow product">
         <div>
@@ -22,10 +24,10 @@ export const Card = (props) => {
           </div>
         </div>
         <div className="seller-details-area text-center text-white flex justify-between">
-            <p className="verified-area iline-block bg-blue-700 p-1 grow m-1 rounded">
+            <p className={`verified-area iline-block bg-blue-700 p-1 grow m-1 rounded ${props.verified  ? '':'invisible'}`}>
                   verified seller
             </p>
-            <p className="super-area iline-block bg-blue-700 p-1 grow m-1 rounded">
+            <p className={`verified-area iline-block bg-blue-700 p-1 grow m-1 rounded ${props.super ? '':'invisible'}`}>
                   Super seller
             </p>
         </div>
