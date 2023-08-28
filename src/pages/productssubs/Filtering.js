@@ -16,13 +16,18 @@ export const Filter = (props) => {
   const isFirstRender = useRef(true);
 
   const search = () => {
-    if (searchValue.trim() == '' && price_gt<0 && price_lt<0 && selectedCategory=='') {
-      setSearchValue('')
+    if (searchValue.trim() === '' && (price_gt==='' || price_gt<0) && (price_lt==='' || price_lt<0) && selectedCategory=='') {
+      setAlertValue("Please recheck check the search fields")
+      return
+    }
+
+    if (price_gt<0 || price_lt<0) {
+      setAlertValue("Please recheck check the search fields")
       return
     }
 
     props.loading(true)
-    props.setProductsUrl(`${apiUrl}/api/products/?search=${searchValue}&category=2&price__gt=${price_gt}&price__lt=${price_lt}`)
+    props.setProductsUrl(`${apiUrl}/api/products/?search=${searchValue}&category=${selectedCategory}&price__gt=${price_gt}&price__lt=${price_lt}`)
   }
 
   const clear = ()=>{

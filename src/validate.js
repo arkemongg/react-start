@@ -10,7 +10,7 @@ export function Validate(props){
         const loggedInUser = localStorage.getItem("user");
         if (loggedInUser) {
           const foundUser = JSON.parse(loggedInUser);
-          setUser(foundUser);
+          // setUser(foundUser);
         }
       }, []);
       return (

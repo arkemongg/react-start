@@ -95,6 +95,7 @@ const Products = () => {
               
               <Card
                 key={index}
+                id = {item.id}
                 img={item.image}
                 title={item.title}
                 description={item.description}
