@@ -51,9 +51,9 @@ export const Details = () => {
 
         <div className={styles.productTitleArea}>
           <p className={styles.productTitle}>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laboriosam assumenda inventore provident in velit nostrum iure tempora a sint tempore.
+            Lorem ipsum dolor sit amet 
           </p>
-          <h1 className={`text-3xl rounded mt-10 ${styles.price}`}>1 PI</h1>
+          <h1 className={`text-xl rounded bg-blue-500 ${styles.price}`}> 1 PI</h1>
         </div>
 
         <div className={styles.productDescriptionArea}>

@@ -4,10 +4,12 @@ import Todos from "./todos";
 import Navigation from "./nav";
 import { Validate } from "./validate";
 import Products from "./pages/Products";
+import Login from './pages/Login';
 import Buynow from './pages/Buynow';
 import Home from "./pages/home";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
+import Register from './pages/Register';
 
 
 import ScrollToTop from "./ScrollToTop";
@@ -36,6 +38,8 @@ const App = () => {
             <Route  path="buynow/:id/:slug" element={<Buynow />} />
             <Route index element={<Home />} />
             <Route path="products" element={<Products />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
         </Route>
