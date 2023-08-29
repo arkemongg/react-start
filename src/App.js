@@ -14,13 +14,9 @@ import ScrollToTop from "./ScrollToTop";
 
 
 import { BrowserRouter,Routes,Route } from "react-router-dom";
+import { useEffect, useState } from 'react';
+
 function Layout({ children }) {
-  const navHeight = 64/* Set the height of your fixed navigation bar */;
-
-  const navbarStyle = {
-    height: `${navHeight}px`,
-  };
-
   return (
     <>
       <Navigation />
@@ -28,13 +24,16 @@ function Layout({ children }) {
   );
 }
 
+
+
 const App = () => {
+
   return (
     <BrowserRouter>
       <ScrollToTop>
       <Routes>
         <Route path="/" element={<Layout />}>
-            <Route path="buynow/:id/:slug" element={<Buynow />} />
+            <Route  path="buynow/:id/:slug" element={<Buynow />} />
             <Route index element={<Home />} />
             <Route path="products" element={<Products />} />
             <Route path="contact" element={<Contact />} />

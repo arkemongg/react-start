@@ -1,0 +1,79 @@
+.buyNowArea{
+    max-width: 960px;
+    width: 95%;
+    min-height: 650px;
+    margin: auto;
+    background: #202020;
+    /* background-image: url('./assets/bg7.jpg');
+    background-position: center;
+    background-size: cover; */
+    margin: 20px auto 20px auto;
+    border-radius: 10px;
+}
+.productImageArea{
+    max-width: 98%;
+    margin: auto;
+    min-height: 350px;
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    flex-direction: column;
+    overflow: hidden;
+}
+.productImages{
+    max-width: 98%;
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+.productImage{
+    width: 100%;
+}
+.productTitleArea{
+    display: flex;
+    margin: auto;
+    overflow: hidden;
+    margin-top: 10px;
+    font-size: 25px;
+    justify-content: space-around;
+}
+.productTitle{
+    max-width: 50%;
+    height: 150px;
+    overflow: hidden;
+}
+.price{
+    max-height: 60px;
+    padding: 10px;
+    background: #4D9D7D;
+}
+.productDescriptionArea{
+    max-height: 450px;
+    overflow: hidden;
+}
+.productDescription{
+    max-width: 95%;
+    margin: auto;
+}
+
+.sellerDetails{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+
+.checkoutArea{
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: end;
+    padding: 20px;
+}
+
+.totalPrice{
+    min-width: 150px;
+}

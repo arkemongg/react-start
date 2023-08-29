@@ -5,6 +5,9 @@ import Footer from "./pages/Footer";
 import Navigation from "./nav";
 
 import './index.css'
+import { createBrowserHistory } from 'history';
+
+
 
 const WithNav = ()=>{
   return (
