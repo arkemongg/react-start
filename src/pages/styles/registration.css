@@ -1,16 +1,11 @@
-.login-section{
+.registration-section{
     background-image: url('../buynowsubs/assets/bg5.jpg');
     background-size: cover;
     background-position: center;
 }
 
-.loading-area{
-    position: relative;
-    bottom: 45%;
-}
-
 @media screen and (max-width: 820px) {
-    .login-section{
+    .registration-section{
         min-height: 700px;
     }
 }

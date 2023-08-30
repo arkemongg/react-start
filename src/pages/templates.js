@@ -57,3 +57,21 @@ export const LoadingCard = (props)=>{
   )
 
 }
+
+export function validatePassword(password) {
+  // Regular expressions to check for uppercase, lowercase, and number
+  const uppercaseRegex = /[A-Z]/;
+  const lowercaseRegex = /[a-z]/;
+  const numberRegex = /[0-9]/;
+
+  // Check if the password meets all the requirements
+  const hasUppercase = uppercaseRegex.test(password);
+  const hasLowercase = lowercaseRegex.test(password);
+  const hasNumber = numberRegex.test(password);
+  
+  // Check if the password length is between 8 and 20 characters
+  const isValidLength = password.length >= 8 && password.length <= 20;
+
+  // Return true if all conditions are met
+  return hasUppercase && hasLowercase && hasNumber && isValidLength;
+}

@@ -4,7 +4,10 @@ import { useLocation } from "react-router";
 const ScrollToTop = (props) => {
   const location = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
     // const loading = document.querySelector('.loading-effect')
     // loading.classList.toggle('invisible')
     // const t = setTimeout(() => {

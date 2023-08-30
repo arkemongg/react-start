@@ -10,6 +10,9 @@ import Home from "./pages/home";
 import Contact from "./pages/Contact";
 import NoPage from "./pages/NoPage";
 import Register from './pages/Register';
+import Reset from './pages/Reset';
+
+import Profile from './pages/Profile';
 
 
 import ScrollToTop from "./ScrollToTop";
@@ -40,6 +43,8 @@ const App = () => {
             <Route path="products" element={<Products />} />
             <Route path="login" element={<Login />} />
             <Route path="register" element={<Register />} />
+            <Route path="reset" element={<Reset />} />
+            <Route path="profile" element={<Profile />} />
             <Route path="contact" element={<Contact />} />
             <Route path="*" element={<NoPage />} />
         </Route>

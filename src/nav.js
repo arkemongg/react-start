@@ -19,7 +19,7 @@ function NavWithoutLogin() {
                                 <Link to="/products" >Products </Link>
                             </li>
                             <li>
-                                <Link to="/login" >Login </Link>
+                                <Link to="/login" >Login / Registration </Link>
                             </li>
                             <li><Link to="/contact">Contact</Link></li>
                         </ul>

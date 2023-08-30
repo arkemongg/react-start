@@ -93,7 +93,7 @@ export const Filter = (props) => {
         </div>
 
       <section className="filtering-section mt-10">
-        <select className="category select select-success w-full" value={selectedCategory} onChange={e=>setSelectedCategory(e.target.value)}>
+        <select className="category select w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" value={selectedCategory} onChange={e=>setSelectedCategory(e.target.value)}>
           <option disabled value="">Category</option>
           {categories.map(c=>(
             <option key = {c.id} onChange={e=> setSelectedCategory(e.target.value)} value={c.id} >{c.title}</option>
@@ -103,7 +103,7 @@ export const Filter = (props) => {
         <input
           type="text"
           placeholder="Products Search"
-          className="search-input input input-bordered w-full"
+          className="search-input input input-bordered w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={searchValue}
           onChange={(e) => setSearchValue(e.target.value)}
         />
@@ -112,14 +112,14 @@ export const Filter = (props) => {
         <input
           type="number"
           placeholder="Price Greater Than"
-          className="price-gt input input-bordered w-full"
+          className="price-gt input input-bordered w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={price_gt}
           onChange={(e) => setPriceGt(e.target.value)}
         />
         <input
           type="number"
           placeholder="Price Less Than"
-          className="price-lt input input-bordered w-full"
+          className="price-lt input input-bordered w-full bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           value={price_lt}
           onChange={(e) => setPriceLt(e.target.value)}
         />
